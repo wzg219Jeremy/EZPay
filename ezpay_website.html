@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EZPay | Alipay & WeChat Pay for U.S. Merchants</title>
+  <meta name="description" content="EZPay enables U.S. merchants to accept Alipay & WeChat Pay in-store and online with fast settlement and transparent pricing." />
+  <style>
+    :root{
+      --bg-deep:#0a0f1c; --bg-mid:#0d1530; --bg-top:#102542;
+      --primary:#3aa0ff; --secondary:#00d38a; --accent:#8a7dff;
+      --glass:rgba(255,255,255,.08); --glass-stroke:rgba(255,255,255,.16);
+      --text:#e6f0ff; --muted:#9fb0cc;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%; scroll-behavior:smooth;}
+    body{margin:0; font-family: 'Segoe UI', Roboto, Arial, sans-serif; color:var(--text); background: radial-gradient(1200px 600px at 10% -10%, rgba(58,160,255,.08), transparent), radial-gradient(1000px 500px at 90% -20%, rgba(0,211,138,.08), transparent), linear-gradient(180deg, var(--bg-top), var(--bg-mid) 40%, var(--bg-deep));}
+    a{color:var(--primary); text-decoration:none}
+    .wrap{max-width:1200px; margin:0 auto; padding:0 24px}
+
+    /* NAV */
+    header{position:sticky; top:0; z-index:30; backdrop-filter:saturate(140%) blur(12px); background:rgba(12,16,32,.55); border-bottom:1px solid rgba(255,255,255,.08)}
+    .nav{display:flex; align-items:center; justify-content:space-between; padding:14px 0}
+    .brand{display:flex; align-items:center; gap:12px; font-weight:800; letter-spacing:.3px}
+    .logo{width:34px; height:34px; border-radius:10px; position:relative; overflow:hidden; box-shadow:0 0 28px rgba(58,160,255,.35)}
+    .logo::before{content:''; position:absolute; inset:-40%; background:conic-gradient(from 0deg, var(--primary), var(--secondary), var(--accent), var(--primary)); filter:blur(6px); animation:spin 8s linear infinite}
+    @keyframes spin{to{transform:rotate(1turn)}}
+    .menu{display:flex; gap:18px; align-items:center; flex-wrap:wrap}
+    .menu a{font-weight:700; letter-spacing:.4px}
+    .btn{display:inline-block; padding:10px 14px; border-radius:12px; font-weight:700; border:1px solid var(--glass-stroke); background:var(--glass); color:var(--text); transition:.25s}
+    .btn:hover{transform:translateY(-2px); box-shadow:0 10px 24px rgba(0,0,0,.35)}
+    .btn.cta{background:linear-gradient(135deg, var(--primary), var(--secondary)); color:#031422; border:none}
+    .lang-toggle{cursor:pointer; border:1px solid var(--glass-stroke); background:var(--glass); color:var(--text); padding:8px 12px; border-radius:10px; font-weight:700}
+
+    /* HERO */
+    .hero{position:relative; overflow:hidden}
+    .hero .inner{position:relative; z-index:2; padding:110px 0 80px}
+    h1{font-size:clamp(28px,3.6vw,54px); line-height:1.1; margin:0 0 10px; background:linear-gradient(135deg, #e9f2ff, #b9ddff 40%, #c6ffee); -webkit-background-clip:text; color:transparent}
+    .lead{font-size:clamp(15px,1.5vw,18px); color:var(--muted); max-width:860px}
+    .cta-row{display:flex; gap:14px; margin-top:20px; flex-wrap:wrap}
+
+    .blob,.blob2{position:absolute; filter:blur(50px); opacity:.45; pointer-events:none}
+    .blob{width:600px; height:600px; left:-120px; top:-160px; background:radial-gradient(circle at 30% 30%, rgba(58,160,255,.55), transparent 60%), radial-gradient(circle at 70% 60%, rgba(138,125,255,.45), transparent 60%); animation:float1 18s ease-in-out infinite}
+    .blob2{width:700px; height:700px; right:-180px; bottom:-220px; background:radial-gradient(circle at 40% 40%, rgba(0,211,138,.45), transparent 60%), radial-gradient(circle at 60% 70%, rgba(58,160,255,.45), transparent 60%); animation:float2 22s ease-in-out infinite}
+    @keyframes float1{0%,100%{transform:translateY(0)} 50%{transform:translateY(30px)}}
+    @keyframes float2{0%,100%{transform:translateY(0)} 50%{transform:translateY(-40px)}}
+    #particles{position:absolute; inset:0; z-index:1; opacity:.55}
+
+    /* SECTIONS */
+    section{padding:80px 0}
+    h2{font-size:clamp(22px,2.4vw,34px); margin:0 0 10px}
+    .sub{color:var(--muted); margin-bottom:24px}
+    .cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:18px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03)); border:1px solid var(--glass-stroke); border-radius:14px; padding:20px; backdrop-filter:blur(8px); box-shadow:0 8px 30px rgba(0,0,0,.25); transition:.25s}
+    .card:hover{transform:translateY(-4px)}
+    .badge{display:inline-flex; align-items:center; gap:8px; padding:6px 10px; border-radius:999px; background:rgba(0,0,0,.25); border:1px solid var(--glass-stroke); color:#cfe5ff; font-size:12px}
+    .grid-2{display:grid; grid-template-columns:repeat(2,1fr); gap:18px}
+    @media(max-width:900px){.grid-2{grid-template-columns:1fr}}
+
+    /* FOOTER */
+    footer{padding:36px 0; background:linear-gradient(135deg, rgba(58,160,255,.18), rgba(0,211,138,.18)); border-top:1px solid rgba(255,255,255,.12)}
+    .footer-cols{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:18px; color:var(--muted)}
+
+    .zh{display:none}
+  .brand span{font-size:40px; font-weight:800; font-style:italic;}
+</style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <div class="brand"><span class="logo" aria-hidden="true"></span><span>EZPay</span></div>
+      <div class="menu">
+        <a href="#home" class="en">HOME</a>
+        <a href="#home" class="zh">首页</a>
+        <a href="#about" class="en">ABOUT</a>
+        <a href="#about" class="zh">关于我们</a>
+        <a href="#payment-solutions" class="en">PAYMENT SOLUTIONS</a>
+        <a href="#payment-solutions" class="zh">支付解决方案</a>
+        <a href="#services" class="en">SERVICES</a>
+        <a href="#services" class="zh">服务</a>
+        <a href="#contact" class="btn en">CONTACT US</a>
+        <a href="#contact" class="btn zh">联系我们</a>
+        <button id="langBtn" class="lang-toggle" onclick="toggleLang()">中文</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HOME / HERO -->
+  <section id="home" class="hero">
+    <canvas id="particles"></canvas>
+    <div class="blob"></div>
+    <div class="blob2"></div>
+    <div class="wrap inner">
+      <div class="en">
+        <span class="badge">Fintech‑grade · Secure · Compliant</span>
+        <h1>Accept Alipay & WeChat Pay in the U.S.</h1>
+        <p class="lead">Reach Chinese customers in‑store and online with fast T+1 settlement, no minimum volume, and transparent pricing.</p>
+        <div class="cta-row">
+          <a class="btn cta" href="#payment-solutions">Explore Payment Solutions</a>
+          <a class="btn" href="#contact">Contact Sales</a>
+        </div>
+      </div>
+      <div class="zh">
+        <span class="badge">金融级 · 安全 · 合规</span>
+        <h1>在美国接入支付宝与微信支付</h1>
+        <p class="lead">覆盖店内与线上场景，T+1 快速结算、无交易量门槛、费用透明。</p>
+        <div class="cta-row">
+          <a class="btn cta" href="#payment-solutions">查看支付方案</a>
+          <a class="btn" href="#contact">联系销售</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap">
+      <h2 class="en">ABOUT</h2>
+      <h2 class="zh">关于我们</h2>
+      <p class="sub en">EZPay helps U.S. merchants connect with Chinese consumers through familiar mobile wallets.</p>
+      <p class="sub zh">EZPay 帮助美国商家，以中国消费者熟悉的移动钱包连接更多客源。</p>
+
+      <div class="cards grid-2">
+        <div class="card">
+          <strong class="en">Our Mission</strong>
+          <strong class="zh">使命</strong>
+          <p class="en">Make Alipay & WeChat Pay acceptance simple, secure, and compliant for U.S. merchants.</p>
+          <p class="zh">让美国商家以简单、安全、合规的方式受理支付宝与微信支付。</p>
+        </div>
+        <div class="card">
+          <strong class="en">Who We Serve</strong>
+          <strong class="zh">服务对象</strong>
+          <p class="en">Retail, restaurants, tourism, universities, and e‑commerce brands seeking Chinese customers.</p>
+          <p class="zh">面向零售、餐饮、旅游、大学及电商，触达中国客群。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAYMENT SOLUTIONS -->
+  <section id="payment-solutions">
+    <div class="wrap">
+      <h2 class="en">PAYMENT SOLUTIONS</h2>
+      <h2 class="zh">支付解决方案</h2>
+      <p class="sub en">In‑Store and Online flows designed for speed, reliability, and easy adoption.</p>
+      <p class="sub zh">店内与线上双方案，快速可靠、易于上手。</p>
+
+      <div class="cards grid-2">
+        <div class="card">
+          <h3 class="en">In‑Store</h3>
+          <h3 class="zh">店内方案</h3>
+          <ul>
+            <li class="en">Static/dynamic QR at checkout; POS compatibility</li>
+            <li class="zh">收银台静/动态二维码；兼容 POS 系统</li>
+            <li class="en">Instant confirmation and printed receipts</li>
+            <li class="zh">交易即时确认，可打印小票</li>
+            <li class="en">T+1 USD settlement</li>
+            <li class="zh">T+1 结算至美元账户</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3 class="en">Online</h3>
+          <h3 class="zh">线上方案</h3>
+          <ul>
+            <li class="en">Checkout buttons for web & mobile</li>
+            <li class="zh">网页与移动端结账按钮</li>
+            <li class="en">Simple API & plugins; Chinese UI</li>
+            <li class="zh">简易 API/插件；中文界面</li>
+            <li class="en">Fraud checks and order reconciliation</li>
+            <li class="zh">风控校验与订单对账</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="wrap">
+      <h2 class="en">SERVICES</h2>
+      <h2 class="zh">服务</h2>
+      <p class="sub en">Beyond payments: onboarding, integration, and growth support.</p>
+      <p class="sub zh">不仅是支付：从接入、集成到增长的全程支持。</p>
+
+      <div class="cards grid-2">
+        <div class="card">
+          <h3 class="en">Onboarding & Training</h3>
+          <h3 class="zh">商户接入与培训</h3>
+          <p class="en">Guided setup for staff and stores with best practices.</p>
+          <p class="zh">为员工与门店提供标准化接入与培训。</p>
+        </div>
+        <div class="card">
+          <h3 class="en">Integration Support</h3>
+          <h3 class="zh">技术接入支持</h3>
+          <p class="en">POS and e‑commerce integration assistance, testing, and launch.</p>
+          <p class="zh">支持 POS 与电商平台集成、测试与上线。</p>
+        </div>
+        <div class="card">
+          <h3 class="en">Compliance & Risk</h3>
+          <h3 class="zh">合规与风控</h3>
+          <p class="en">KYC/AML aligned flows and settlement controls.</p>
+          <p class="zh">符合 KYC/AML 的流程与结算/对账控制。</p>
+        </div>
+        <div class="card">
+          <h3 class="en">Growth & Campaigns</h3>
+          <h3 class="zh">增长与营销活动</h3>
+          <p class="en">Wallet listing eligibility, seasonal campaigns, analytics insights.</p>
+          <p class="zh">钱包内门店曝光、节日活动、数据洞察。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT US -->
+  <section id="contact">
+    <div class="wrap">
+      <h2 class="en">CONTACT US</h2>
+      <h2 class="zh">联系我们</h2>
+      <p class="sub en">Tell us about your business and we’ll reach out shortly.</p>
+      <p class="sub zh">留下您的业务信息，我们将尽快与您联系。</p>
+      <div class="cards grid-2">
+        <div class="card">
+          <form onsubmit="event.preventDefault(); alert(currentLang==='en' ? 'Thanks! We\'ll contact you soon.' : '谢谢！我们会尽快联系您。');">
+            <input placeholder="Company / 公司名称" required style="width:100%; padding:12px; border-radius:10px; border:1px solid var(--glass-stroke); background:rgba(255,255,255,.03); color:var(--text); margin-bottom:10px">
+            <input placeholder="Contact / 联系人" required style="width:100%; padding:12px; border-radius:10px; border:1px solid var(--glass-stroke); background:rgba(255,255,255,.03); color:var(--text); margin-bottom:10px">
+            <input placeholder="Email" type="email" required style="width:100%; padding:12px; border-radius:10px; border:1px solid var(--glass-stroke); background:rgba(255,255,255,.03); color:var(--text); margin-bottom:10px">
+            <textarea placeholder="Brief needs / 简要需求" style="width:100%; padding:12px; border-radius:10px; border:1px solid var(--glass-stroke); background:rgba(255,255,255,.03); color:var(--text); height:120px"></textarea>
+            <div class="cta-row">
+              <button class="btn cta en" type="submit">Send</button>
+              <button class="btn cta zh" type="submit">发送</button>
+            </div>
+          </form>
+        </div>
+        <div class="card">
+          <p>Email: contact@ezpay.com</p>
+          <p>Phone: +1 (888) 555‑1234</p>
+          <p class="en">HQ: Minneapolis, MN, USA</p>
+          <p class="zh">总部：美国明尼阿波利斯</p>
+          <p class="en"><strong>Business Hours:</strong> Mon–Fri 9:00–18:00 (CT)</p>
+          <p class="zh"><strong>工作时间：</strong> 周一至周五 9:00–18:00（中部）</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap footer-cols">
+      <div>© 2025 EZPay Global Inc.</div>
+      <div class="en">Alipay® and WeChat Pay® are trademarks of their respective owners.</div>
+      <div class="zh">“支付宝”“微信支付”为其各自所有者之商标。</div>
+    </div>
+  </footer>
+
+  <script>
+    // Language toggle with persistence
+    let currentLang = localStorage.getItem('ezpay_lang') || 'en';
+    function setLang(lang){
+      currentLang = lang;
+      document.querySelectorAll('.en').forEach(e=> e.style.display = (lang==='en') ? 'block' : 'none');
+      document.querySelectorAll('.zh').forEach(e=> e.style.display = (lang==='zh') ? 'block' : 'none');
+      const btn = document.getElementById('langBtn');
+      if(btn) btn.textContent = (lang==='en') ? '中文' : 'EN';
+      localStorage.setItem('ezpay_lang', lang);
+    }
+    function toggleLang(){ setLang(currentLang==='en' ? 'zh' : 'en'); }
+    document.addEventListener('DOMContentLoaded', ()=> setLang(currentLang));
+
+    // Simple Particles
+    (function(){
+      const canvas = document.getElementById('particles');
+      const ctx = canvas.getContext('2d');
+      let w,h, dpr = Math.min(window.devicePixelRatio||1, 2);
+      let dots = [];
+      const DOTS = 90;
+      function resize(){
+        w = canvas.clientWidth = canvas.parentElement.clientWidth;
+        h = canvas.clientHeight = 420; // hero height
+        canvas.width = w * dpr; canvas.height = h * dpr; ctx.setTransform(dpr,0,0,dpr,0,0);
+      }
+      function init(){
+        dots = Array.from({length: DOTS}, ()=>({
+          x: Math.random()*w,
+          y: Math.random()*h,
+          vx:(Math.random()-.5)*0.6,
+          vy:(Math.random()-.5)*0.6,
+          r: Math.random()*2+0.6
+        }));
+      }
+      function step(){
+        ctx.clearRect(0,0,w,h);
+        for(let i=0;i<dots.length;i++){
+          for(let j=i+1;j<dots.length;j++){
+            const a=dots[i], b=dots[j];
+            const dx=a.x-b.x, dy=a.y-b.y; const dist=Math.hypot(dx,dy);
+            if(dist<120){
+              const alpha = 1 - dist/120;
+              ctx.strokeStyle = `rgba(58,160,255,${.12*alpha})`;
+              ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke();
+            }
+          }
+        }
+        for(const p of dots){
+          ctx.beginPath(); ctx.fillStyle = 'rgba(138,125,255,0.9)';
+          ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fill();
+          p.x+=p.vx; p.y+=p.vy;
+          if(p.x<0||p.x>w) p.vx*=-1; if(p.y<0||p.y>h) p.vy*=-1;
+        }
+        requestAnimationFrame(step);
+      }
+      resize(); init(); step();
+      window.addEventListener('resize', ()=>{resize(); init();});
+    })();
+  </script>
+</body>
+</html>
